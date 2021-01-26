@@ -1,0 +1,14 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Создать запись
+{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <hr>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+{% endblock content %}

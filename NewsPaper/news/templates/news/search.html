@@ -1,0 +1,27 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Поиск
+{% endblock title %}
+
+{% block content %}
+<form method="GET">
+    {{ filter.form }}
+    <button type="submit" class="btn btn-primary">Найти</button>
+</form>
+{% for post in filter.qs %}
+        <div class="post-preview">
+          <a href="{% url 'new' post.pk %}">
+            <h5 class="post-title">
+             {{ post.author }}
+            </h5>
+              <h5 class="post-title">{{ post.header }}</h5>
+            <h5 class="post-subtitle">
+              {{ post.article_text|truncatechars:50 }}
+            </h5>
+          </a>
+          <p class="post-meta">Опубликовано
+            <a href="#">{{ post.created_time }}</a></p>
+          {% endfor %}
+        </div>
+{% endblock content %}
